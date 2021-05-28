@@ -16,17 +16,20 @@ import java.sql.SQLException;
 public class Conection {
        public Connection get_connection(){
         Connection conection = null;
-        try
-        {
-            conection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mensajes_app", "root", "");
-            if(conection != null){
-                System.out.println("CONECTION SUCCES");
+        if(conection == null){
+            try
+            {
+                conection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mensajes_app", "root", "");
+    //            if(conection != null){
+    //                System.out.println("CONECTION SUCCES");
+    //            }
+            }
+            catch(SQLException e)
+            {
+                System.out.println(e);
             }
         }
-        catch(SQLException e)
-        {
-            System.out.println(e);
-        }
+       
         return conection;
     }
 
